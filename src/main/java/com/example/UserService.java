@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
+import java.util.logging.Level; 
 
 public class UserService {
 
@@ -22,7 +23,7 @@ public class UserService {
             throw new SQLException("Database password not set in environment variable DB_PASSWORD");
         }
 
-        String query = "SELECT * FROM users WHERE name = ?";
+        String query = "SELECT name FROM users WHERE name = ?";
 
         try (Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -31,7 +32,7 @@ public class UserService {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    LOGGER.fine("Found user: " + rs.getString("name"));
+                    LOGGER.log(Level.FINE, "Found user: {0}", rs.getString("name"));
                 }
             }
         }
@@ -42,3 +43,4 @@ public class UserService {
         LOGGER.info("I am never called");
     }
 }
+4

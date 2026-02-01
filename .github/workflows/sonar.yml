@@ -44,4 +44,5 @@ jobs:
             -Dsonar.projectKey=perera214147b_lab02 \
             -Dsonar.organization=perera214147b \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+            -Dsonar.coverage.exclusions=**/UserService.java

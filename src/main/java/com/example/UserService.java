@@ -40,7 +40,8 @@ public class UserService {
 
     // SMELL: Unused method
     public void notUsed() {
-        LOGGER.info("I am never called");
+        if (LOGGER.isLoggable(Level.INFO)) {
+            LOGGER.info("I am never called");
+        }
     }
 }
-4
